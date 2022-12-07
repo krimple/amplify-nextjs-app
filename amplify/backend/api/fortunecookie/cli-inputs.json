@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "paths": {
+    "/fortune": {
+      "name": "/fortune",
+      "lambdaFunction": "generateFortuneCookie",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "read"
+        ]
+      }
+    }
+  }
+}
