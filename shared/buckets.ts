@@ -1,8 +1,4 @@
 import { S3Client, ListBucketsCommand } from '@aws-sdk/client-s3';
-import { Amplify } from "aws-amplify";
-import awsExports from "../src/aws-exports";
-
-Amplify.configure({ ...awsExports, ssr: true });
 
 const s3Client = new S3Client({ apiVersion: '2006-03-01', region: 'us-east-2' });
 

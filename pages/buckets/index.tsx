@@ -1,6 +1,10 @@
 
 import BucketLister from './BucketLister';
 import {listBuckets} from '../../shared/buckets';
+import { Amplify } from "aws-amplify";
+import awsExports from "../../src/aws-exports";
+
+Amplify.configure({ ...awsExports, ssr: true });
 
 /**
  * Embeds a non-page-or-template server component to check S3 bucket listing - note,
@@ -17,7 +21,7 @@ export default function Page(props: any) {
   );
 }
 
-Page.getInitialProps = async () => {
+Page.getServerSideProps = async () => {
   const bucketList = await listBuckets();
   return {
     buckets: bucketList
