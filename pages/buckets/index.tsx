@@ -21,7 +21,7 @@ export default function Page(props: any) {
   );
 }
 
-Page.getServerSideProps = async () => {
+export const getServerSideProps = async () => {
   const bucketList = await listBuckets();
   return {
     buckets: bucketList
