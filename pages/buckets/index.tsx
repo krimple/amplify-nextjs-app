@@ -25,6 +25,7 @@ export default function Page(props: any) {
 export const getServerSideProps = async ({ req } : any) => {
   const { Auth } = withSSRContext(req);
   const user = await Auth.currentAuthenticatedUser();
+  console.dir(user);
   // const bucketList = await listBuckets();
   return {
     user: user.username,
