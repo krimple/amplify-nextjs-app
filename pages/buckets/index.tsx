@@ -13,10 +13,10 @@ Amplify.configure({ ...awsExports, ssr: true });
  * @constructor
  */
 export default function Page(props: any) {
-  const {buckets} = props;
+  const {user} = props;
   return (
     <div>
-      { props.user }
+      { user }
       {/*<BucketLister buckets={buckets}></BucketLister>*/}
     </div>
   );
@@ -25,10 +25,10 @@ export default function Page(props: any) {
 export const getServerSideProps = async ({ req } : any) => {
   const { Auth } = withSSRContext(req);
   const user = await Auth.currentAuthenticatedUser();
-  const bucketList = await listBuckets();
+  // const bucketList = await listBuckets();
   return {
     user: user.username,
-    buckets: bucketList
+    // buckets: bucketList
   };
 }
 
