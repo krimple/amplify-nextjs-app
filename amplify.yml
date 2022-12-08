@@ -6,7 +6,7 @@ frontend:
         - npm ci
     build:
       commands:
-        - amplifyPush --simple
+        - amplify pull --frontend
         - npm run build
   artifacts:
     baseDirectory: .next
