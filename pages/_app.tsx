@@ -11,7 +11,7 @@ export default function MyApp({ Component, pageProps}: any) {
   useEffect(() => {
     function doSomething() {
       Amplify.configure({
-        ...awsExports, ssr: false
+        ...awsExports, ssr: true
       });
       setLoaded(true);
     }
