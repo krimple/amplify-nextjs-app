@@ -1,5 +1,4 @@
 import styles from "../../styles/Home.module.css";
-import { listBuckets } from "../../shared/buckets";
 
 export default function BucketLister(props: any) {
   const buckets = props.buckets;

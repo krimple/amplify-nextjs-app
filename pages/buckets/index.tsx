@@ -1,7 +1,7 @@
 
 import BucketLister from './BucketLister';
 import {listBuckets} from '../../shared/buckets';
-import { Amplify } from "aws-amplify";
+import {Amplify, withSSRContext} from "aws-amplify";
 import awsExports from "../../src/aws-exports";
 
 Amplify.configure({ ...awsExports, ssr: true });
@@ -16,14 +16,19 @@ export default function Page(props: any) {
   const {buckets} = props;
   return (
     <div>
-      <BucketLister buckets={buckets}></BucketLister>
+      { props.user }
+      {/*<BucketLister buckets={buckets}></BucketLister>*/}
     </div>
   );
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({ req } : any) => {
+  const { Auth } = withSSRContext(req);
+  const user = await Auth.currentAuthenticatedUser();
   const bucketList = await listBuckets();
   return {
+    user: user.username,
     buckets: bucketList
   };
 }
+
